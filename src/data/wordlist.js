@@ -7776,4 +7776,4 @@ export const words = [
   'zoologist',
   'zoology',
   'zoom',
-];
+]

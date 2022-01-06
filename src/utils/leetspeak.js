@@ -9,4 +9,4 @@ export const leetspeak = (str) =>
     .replace(/t/gi, '7')
     .replace(/b/gi, '8')
     .replace(/g/g, '9')
-    .replace(/o/gi, '0');
+    .replace(/o/gi, '0')

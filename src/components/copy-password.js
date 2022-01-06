@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { copyToClipboard } from '../utils/copy-to-clipboard';
+import { copyToClipboard } from '../utils/copy-to-clipboard'
 
 const CopyPassword = ({ text }) => {
-  const [buttonText, setButtonText] = useState('Copy');
+  const [buttonText, setButtonText] = useState('Copy')
 
   return (
     <button
       onClick={() => {
-        copyToClipboard(text);
-        setButtonText('Copied!');
-        setTimeout(() => setButtonText('Copy'), 1500);
+        copyToClipboard(text)
+        setButtonText('Copied!')
+        setTimeout(() => setButtonText('Copy'), 1500)
       }}
     >
       {buttonText}
     </button>
-  );
-};
+  )
+}
 
-export default CopyPassword;
+export default CopyPassword

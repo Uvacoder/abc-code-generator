@@ -1,37 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import zxcvbn from 'zxcvbn';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import zxcvbn from 'zxcvbn'
 
-import ProgressBar from '../components/progress-bar';
+import ProgressBar from '../components/progress-bar'
 
-import styles from './password-strength.module.css';
+import styles from './password-strength.module.css'
 
-import { capitalize } from '../utils/capitalize';
+import { capitalize } from '../utils/capitalize'
 
 const PasswordStrength = () => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState('')
   const {
     score,
     crack_times_display: { offline_fast_hashing_1e10_per_second: timeToCrack },
     feedback: { warning, suggestions },
-  } = zxcvbn(input);
+  } = zxcvbn(input)
 
   useEffect(() => {
-    document.title = 'Password strength checker · pwizard';
-  });
+    document.title = 'Password strength checker · pwizard'
+  })
 
   return (
     <div className={styles.container}>
       <h2>Password strength checker</h2>
-      <p>Enter a password to check its strength.</p>
       <p>
-        <Link to='/'>Password generator</Link>
+        <strong>
+          <u>Note</u>
+        </strong>
+        : This tool does not store any information entered on this page.
+      </p>
+      <p>
+        <Link to="/">&larr; Password generator</Link>
       </p>
       <input
-        type='text'
-        name='input-password'
-        id='input-password'
-        placeholder='Type a password'
+        type="text"
+        name="input-password"
+        id="input-password"
+        placeholder="Enter a password"
         autoFocus
         onFocus={(e) => e.target.select()}
         value={input}
@@ -61,7 +66,7 @@ const PasswordStrength = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PasswordStrength;
+export default PasswordStrength

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-import CopyPassword from '../components/copy-password';
+import CopyPassword from '../components/copy-password'
 
-import styles from './password-generator.module.css';
+import styles from './password-generator.module.css'
 
-import { generate } from '../utils/generate';
-import { leetspeak } from '../utils/leetspeak';
+import { generate } from '../utils/generate'
 
 const PasswordGenerator = () => {
   const [config, setConfig] = useState({
@@ -27,35 +26,33 @@ const PasswordGenerator = () => {
     uppercasePassphrase: false,
     eleet: false,
     separator: '-',
-  });
-  let pw = generate(config);
+  })
+  let pw = generate(config)
 
   useEffect(() => {
     document.title =
-      'Generate cryptographically secure passwords/passphrases · pwizard';
-  });
+      'Generate cryptographically secure passwords/passphrases · pwizard'
+  })
 
   const onChange = (e) => {
     setConfig({
       ...config,
       [e.target.name]:
         e.target.type === 'checkbox' ? e.target.checked : e.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <div className={styles.container}>
       <h1>pwizard</h1>
       <p>
         Generate{' '}
-        <a href='https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator'>
+        <a href="https://en.wikipedia.org/wiki/Cryptographically-secure_pseudorandom_number_generator">
           cryptographically secure
         </a>{' '}
         passwords/passphrases.
       </p>
-      <div className={styles.generatedPw}>
-        {pw || leetspeak('Never-Gonna-Give-You-Up')}
-      </div>
+      <div className={styles.generatedPw}>{pw}</div>
       <div className={styles.buttons}>
         <button onClick={() => setConfig({ ...config })}>Regenerate</button>
         <CopyPassword text={pw} />
@@ -66,10 +63,10 @@ const PasswordGenerator = () => {
             <div className={styles.title}>Type</div>
             <label className={styles.formControl}>
               <input
-                type='radio'
-                name='type'
-                id='password'
-                value='password'
+                type="radio"
+                name="type"
+                id="password"
+                value="password"
                 onChange={onChange}
                 checked={config.type === 'password'}
               />
@@ -77,10 +74,10 @@ const PasswordGenerator = () => {
             </label>
             <label className={styles.formControl}>
               <input
-                type='radio'
-                name='type'
-                id='passphrase'
-                value='passphrase'
+                type="radio"
+                name="type"
+                id="passphrase"
+                value="passphrase"
                 onChange={onChange}
                 checked={config.type === 'passphrase'}
               />
@@ -93,11 +90,11 @@ const PasswordGenerator = () => {
               <>
                 <label>
                   <input
-                    type='range'
-                    name='pwLength'
-                    id='pwLength'
-                    min='8'
-                    max='128'
+                    type="range"
+                    name="pwLength"
+                    id="pwLength"
+                    min="8"
+                    max="128"
                     value={config.pwLength}
                     onChange={onChange}
                   />
@@ -106,9 +103,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='includeLowercase'
-                    id='includeLowercase'
+                    type="checkbox"
+                    name="includeLowercase"
+                    id="includeLowercase"
                     checked={config.includeLowercase}
                     onChange={onChange}
                   />
@@ -116,9 +113,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='includeUppercase'
-                    id='includeUppercase'
+                    type="checkbox"
+                    name="includeUppercase"
+                    id="includeUppercase"
                     checked={config.includeUppercase}
                     onChange={onChange}
                   />
@@ -126,9 +123,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='includeNumbers'
-                    id='includeNumbers'
+                    type="checkbox"
+                    name="includeNumbers"
+                    id="includeNumbers"
                     checked={config.includeNumbers}
                     onChange={onChange}
                   />
@@ -136,9 +133,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='includeSymbols'
-                    id='includeSymbols'
+                    type="checkbox"
+                    name="includeSymbols"
+                    id="includeSymbols"
                     checked={config.includeSymbols}
                     onChange={onChange}
                   />
@@ -146,9 +143,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='includeAmbiguousChars'
-                    id='includeAmbiguousChars'
+                    type="checkbox"
+                    name="includeAmbiguousChars"
+                    id="includeAmbiguousChars"
                     checked={config.includeAmbiguousChars}
                     onChange={onChange}
                   />
@@ -159,11 +156,11 @@ const PasswordGenerator = () => {
               <>
                 <label>
                   <input
-                    type='range'
-                    name='passphraseLength'
-                    id='pass'
-                    min='4'
-                    max='20'
+                    type="range"
+                    name="passphraseLength"
+                    id="pass"
+                    min="4"
+                    max="20"
                     value={config.passphraseLength}
                     onChange={onChange}
                   />
@@ -172,9 +169,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='titlecasePassphrase'
-                    id='titlecasePassphrase'
+                    type="checkbox"
+                    name="titlecasePassphrase"
+                    id="titlecasePassphrase"
                     checked={config.titlecasePassphrase}
                     onChange={onChange}
                   />
@@ -182,9 +179,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='uppercasePassphrase'
-                    id='uppercasePassphrase'
+                    type="checkbox"
+                    name="uppercasePassphrase"
+                    id="uppercasePassphrase"
                     checked={config.uppercasePassphrase}
                     onChange={onChange}
                   />
@@ -192,9 +189,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='includeNumberInPassphrase'
-                    id='includeNumberInPassphrase'
+                    type="checkbox"
+                    name="includeNumberInPassphrase"
+                    id="includeNumberInPassphrase"
                     checked={config.includeNumberInPassphrase}
                     onChange={onChange}
                   />
@@ -202,9 +199,9 @@ const PasswordGenerator = () => {
                 </label>
                 <label className={styles.formControl}>
                   <input
-                    type='checkbox'
-                    name='eleet'
-                    id='eleet'
+                    type="checkbox"
+                    name="eleet"
+                    id="eleet"
                     checked={config.eleet}
                     onChange={onChange}
                   />
@@ -213,10 +210,10 @@ const PasswordGenerator = () => {
                 <label>
                   Separator:
                   <input
-                    type='text'
-                    name='separator'
-                    id='separator'
-                    maxLength='1'
+                    type="text"
+                    name="separator"
+                    id="separator"
+                    maxLength="1"
                     onFocus={(e) => e.target.select()}
                     value={config.separator}
                     checked={config.separator}
@@ -229,11 +226,11 @@ const PasswordGenerator = () => {
         </form>
       </div>
       <p>
-        <Link to='/password-strength'>Password strength checker</Link> &middot;{' '}
-        <a href='https://github.com/rsapkf/pwizard'>Source</a>
+        <Link to="/password-strength">Password strength checker</Link> &middot;{' '}
+        <a href="https://github.com/rsapkf/pwizard">Source</a>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default PasswordGenerator;
+export default PasswordGenerator
