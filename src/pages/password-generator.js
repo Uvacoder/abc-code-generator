@@ -23,7 +23,8 @@ const PasswordGenerator = () => {
     includeAmbiguousChars: false,
     passphraseLength: 6,
     includeNumberInPassphrase: false,
-    capitalize: false,
+    titlecasePassphrase: false,
+    uppercasePassphrase: false,
     eleet: false,
     separator: '-',
   });
@@ -172,12 +173,22 @@ const PasswordGenerator = () => {
                 <label className={styles.formControl}>
                   <input
                     type='checkbox'
-                    name='capitalize'
-                    id='capitalize'
-                    checked={config.capitalize}
+                    name='titlecasePassphrase'
+                    id='titlecasePassphrase'
+                    checked={config.titlecasePassphrase}
                     onChange={onChange}
                   />
-                  Capitalize
+                  Titlecase
+                </label>
+                <label className={styles.formControl}>
+                  <input
+                    type='checkbox'
+                    name='uppercasePassphrase'
+                    id='uppercasePassphrase'
+                    checked={config.uppercasePassphrase}
+                    onChange={onChange}
+                  />
+                  Uppercase
                 </label>
                 <label className={styles.formControl}>
                   <input

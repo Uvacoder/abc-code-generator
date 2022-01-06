@@ -110,17 +110,20 @@ const generatePassphrase = (options) => {
   let wordList = [];
   for (let i = 0; i < options.passphraseLength; i++) {
     const wordIndex = getRandomInt(0, words.length - 1);
-
-    if (options.capitalize) {
-      wordList[i] = capitalize(words[wordIndex]);
-    } else {
-      wordList[i] = words[wordIndex];
-    }
+    wordList[i] = words[wordIndex];
   }
 
   if (options.includeNumberInPassphrase) {
     const idx = getRandomInt(0, wordList.length - 1);
     wordList[idx] = wordList[idx] + getRandomInt(0, 9);
+  }
+
+  if (options.titlecasePassphrase && !options.uppercasePassphrase) {
+    wordList = wordList.map((word) => capitalize(word));
+  }
+
+  if (options.uppercasePassphrase) {
+    wordList = wordList.map((word) => word.toUpperCase());
   }
 
   if (options.eleet) {
